@@ -66,7 +66,8 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 * [build/](build/): Running `cmake ..` and `make`.
 * [include/](include/): c++ header files.
 * [lib/](lib/): c++ custom libraries.
-* [resource/](resource/): input videos.
+* [resource/](resource/): input images and video, deep neural network configuration files.
+* [result/](result/): output images and video.
 * [src/](src/): c++ definitions.
 
 
@@ -78,20 +79,33 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 ├── build
 ├── CMakeLists.txt
 ├── include
-│   ├── LaneDetector.hpp
-│   └── ShowRoadLane.hpp
+│   └── ClassifyDetect.hpp
 ├── lib
 ├── README.md
 ├── ressource
+│   ├── image
+│   │   ├── image_1.jpg
+│   │   └── image_2.jpg
+│   ├── txt
+│   │   ├── classification_classes_ILSVRC2012.txt
+│   │   ├── DenseNet_121.caffemodel
+│   │   ├── DenseNet_121.prototxt
+│   │   ├── frozen_inference_graph.pb
+│   │   ├── object_detection_classes_coco.txt
+│   │   └── ssd_mobilenet_v2_coco_2018_03_29.pbtxt.txt
 │   └── video
-│       ├── project_video.mp4
-│       └── solidWhiteRight.mp4
+│       └── video_1.mp4
+├── result
+│   ├── image
+│   │   └── imgOutC.jpg
+│   └── video
+│       └── video_result.avi
 └── src
-    ├── LaneDetector.cpp
-    ├── Main.cpp
-    └── ShowRoadLane.cpp
+    ├── ClassifyDetect.cpp
+    └── Main.cpp
 
-6 directories, 9 files
+11 directories, 16 files
+
 
 ```
 
@@ -121,7 +135,7 @@ This is an example of how to list things you need to use the software and how to
 1. Install first `opencv4` cpp libraries at [https://opencv.org/](https://opencv.org/)
 2. Clone the repo
    ```sh
-   git clone https://github.com/zoumson/RoadLaneDetection.git
+   git clone https://github.com/zoumson/ObjectClassificationAndDetectionDNN.git
    ```
 3. Go to build
    ```sh
@@ -134,7 +148,7 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    cmake ..
    ```
-6. Finally run the makefile to generate the executable `plate`
+6. Finally run the makefile to generate the executable `main`
    ```sh
    make
    ```
@@ -146,24 +160,56 @@ This is an example of how to list things you need to use the software and how to
 <br>
 
 ```
-Road lane detection
-Usage: lane [params] 
+Image Classification and Image/Video  detection
+Usage: main [params] 
 
 	-?, -h, --help, --usage (value:true)
 		show help message
-	-d, --delay (value:30)
-		delay between two frames
-	-v, --video (value:<none>)
+	-c, --classC (value:../ressource/txt/classification_classes_ILSVRC2012.txt)
+		classification classes
+	--classDI, -l (value:../ressource/txt/object_detection_classes_coco.txt)
+		image detection classes
+	-e, --nnMC (value:../ressource/txt/DenseNet_121.caffemodel)
+		classification config
+	-i, --imgInC
+		input image path
+	--imgOutC, -j (value:../result/image/imgOutC.jpg)
+		output classified image
+	-m, --modelC (value:caffe)
+		classification framework
+	--modelDI, -r (value:TensorFlow)
+		image detection framework
+	-n, --nnPC (value:../ressource/txt/DenseNet_121.prototxt)
+		classification model
+	--nnMDI, -q (value:../ressource/txt/ssd_mobilenet_v2_coco_2018_03_29.pbtxt.txt)
+		image detection config
+	--nnPDI, -p (value:../ressource/txt/frozen_inference_graph.pb)
+		image detection model
+	-o, --option (value:<none>)
+		1 image classification, 2 image detection, 3 video detection
+	-t, --videoOut (value:../result/video/video_result.avi)
+		output detected video path
+	-v, --videoIn
 		input video path
+
 ```
 
 <br>
 
-2. Run with a video in `ressource/video`
+2. Run an image classification with an image in `ressource/image`
 ```
-../ressource/video/solidWhiteRight.mp4
+./main -o=1 -i=../ressource/image/image_1.jpg
 ```
 
+3. Run an image detection with an image  in `ressource/image`
+```
+./main -o=2 -i=../ressource/image/image_2.jpg
+```
+
+3. Run a video detection with a video  in `ressource/video`
+```
+./main -o=3 -i=../ressource/video/video_1.mp4
+```
 <br>
 
 
@@ -197,7 +243,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Adama Zouma - <!-- [@your_twitter](https://twitter.com/your_username) -->- stargue49@gmail.com
 
-Project Link: [https://github.com/zoumson/RoadLaneDetection](https://github.com/zoumson/RoadLaneDetection.git)
+Project Link: [https://github.com/zoumson/ObjectClassificationAndDetectionDNN](https://github.com/zoumson/ObjectClassificationAndDetectionDNN.git)
 
 
 
