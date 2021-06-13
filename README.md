@@ -133,7 +133,7 @@ This is an example of how to list things you need to use the software and how to
 1. Install first `opencv4` cpp libraries at [https://opencv.org/](https://opencv.org/)
 2. Clone the repo
    ```sh
-   git clone https://github.com/zoumson/ObjectClassificationAndDetectionDNN.git
+   git clone https://github.com/zoumson/LaneDetectionDNN.git
    ```
 3. Go to build
    ```sh
@@ -241,7 +241,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Adama Zouma - <!-- [@your_twitter](https://twitter.com/your_username) -->- stargue49@gmail.com
 
-Project Link: [https://github.com/zoumson/ObjectClassificationAndDetectionDNN](https://github.com/zoumson/ObjectClassificationAndDetectionDNN.git)
+Project Link: [https://github.com/zoumson/LaneDetectionDNN](https://github.com/zoumson/LaneDetectionDNN.git)
 
 
 
